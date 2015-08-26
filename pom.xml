@@ -27,9 +27,9 @@
                 <!-- AUT has default base path-->
                 <site.basepath></site.basepath>
                 <!--platform to run e.g linux64, mac32, win32, win64, Android-->
-                <platform>win64</platform>
+                <platform>Android</platform>
                 <!--Desired browser to run e.g firefox,chrome,iexplore,phantomjs, appium, sauce -->
-                <browser>firefox</browser>
+                <browser>appium</browser>
                 <!--Location of Chrome, IE, PhantomJs Drivers installed, normally in your project source code under tools-->
                 <!-- Below is windows example. Linux example  home/dev/src/cucumber_testng_java/tools-->
                 <!-- If set to DEFAULT_PATH, will try to access from default path location valid for FIREFOX Driver-->

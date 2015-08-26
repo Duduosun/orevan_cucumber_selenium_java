@@ -36,7 +36,7 @@ public class ApiSteps extends ApiHelper {
 
     @Then("^I get a (\\d+) http status code$")
     public void I_get_a_http_status_code(int statusCodeExpected) {
-        Assert.assertEquals(statusCodeExpected, response.statusCode());
+    		Assert.assertEquals(statusCodeExpected, response.statusCode());
     }
 
 

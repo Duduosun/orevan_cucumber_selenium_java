@@ -253,7 +253,7 @@ public class WebDriverHelper extends EventFiringWebDriver {
     private static DesiredCapabilities getAppiumDesiredCapabilities() {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("device", "Android");
-        capabilities.setCapability("app", "Chrome");
+        capabilities.setCapability(MobileCapabilityType.APP, "Chrome");
         capabilities.setCapability(MobileCapabilityType.BROWSER_NAME, "");
         capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, PLATFORM);
         capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "42f7ab1fb7b59fab");
