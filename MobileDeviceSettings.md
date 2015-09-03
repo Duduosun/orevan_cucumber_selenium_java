@@ -100,6 +100,38 @@ Android Native Mobile apps are automated using
   1) AndroidHelper.class
   2) AndroidObject.class
   3) Appium and Android Driver
+  4) Application under test (.apk file)
+
+Android Driver and Appium configuration in AndroidHelper.class
+-------------------------------------------------------------------
+
+Provide Appium Server Details URL and Port in this method 
+
+    private static AndroidDriver<WebElement> startAppiumDriver() {
+        DesiredCapabilities capabilities = getAppiumDesiredCapabilities();
+        try {
+            ANDROID_DRIVER = new AndroidDriver<>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        return ANDROID_DRIVER;
+    }
+
+Provide APK or application under test file location and other configuration in this method  
+
+    private static DesiredCapabilities getAppiumDesiredCapabilities() {
+        File app = new File("D:\\projects\\master_cucumber_testng\\tools\\ContactManager.apk");
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability(MobileCapabilityType.APP_PACKAGE, "com.example.android.contactmanager");
+        capabilities.setCapability(MobileCapabilityType.APP_ACTIVITY, ".ContactManager");
+        capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "emulator-5554");
+        //capabilities.setCapability("deviceName", "42f7ab1fb7b59fab");
+        capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "IOS");
+        capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "Appium");
+        capabilities.setCapability(MobileCapabilityType.APP, app.getAbsolutePath());
+        return capabilities;
+    }
+
 
 Android Page Objects
 -------------------------------------------------------------------
