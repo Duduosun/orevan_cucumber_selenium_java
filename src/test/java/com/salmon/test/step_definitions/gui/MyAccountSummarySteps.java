@@ -1,6 +1,6 @@
 package com.salmon.test.step_definitions.gui;
 
-import com.salmon.test.page_objects.MyAccountSummaryPage;
+import com.salmon.test.page_objects.gui.MyAccountSummaryPage;
 import com.salmon.test.step_definitions.gui.register.NewRegistrationSteps;
 import cucumber.api.java.en.Then;
 

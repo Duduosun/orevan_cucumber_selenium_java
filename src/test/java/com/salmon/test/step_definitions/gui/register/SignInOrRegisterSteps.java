@@ -1,6 +1,6 @@
 package com.salmon.test.step_definitions.gui.register;
 
-import com.salmon.test.page_objects.SignInOrRegisterPage;
+import com.salmon.test.page_objects.gui.SignInOrRegisterPage;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;

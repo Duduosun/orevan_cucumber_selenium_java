@@ -1,14 +1,10 @@
-================================
+
 Mobile Device Settings
 ================================
 This document covers settings for  
 *Mobile Automation on Emulated and Physical Devices, for Native, Hybrid, and Web App  
 *Mobile Automation on Cloud using SauceLabs
-  
 
-
-1) Mobile Automation on Emulated and Physical Devices, for Native, Hybrid, and Web App
-====================
 Machine Configuration
 ====================
 Configure Windows setup: -   
@@ -20,7 +16,7 @@ Configure Windows setup: -
 **Please note by default Android studio downloads latest Android Emulated devices
 
 
-Framework Setup steps For Emulated Devices
+Framework setup steps for Starting an Emulated Device
 ============================
  For the desired android emulated device setup and operating system version e.g Android Kitkat which is 4.4.2, download necessary packages as listed below
  
@@ -36,43 +32,100 @@ Install all these packages
 2)Android AVD  
 Locate AVD Manager.exe located in SDK installed location
 
-Click on Create a new AVD (Android Virtual Device)
-e.g for Android 4.4.2 device
-Name: "anyName"
-Device: "Nexus 7 (7.02", 1200 * 1920:xhdpi)"  
-CPU/ABI: ARM(armeabi-v7a)  
-Keyboard: Yes Hardware
-Target:  Android 4.4.2 (API level 19)
-Skin: HVGA
-Camera:  None
-Memory: RAM 1024 VM Heap 32
-Internal Storage: 200 MiB
-SD Card :  Size 100 MiB
-Emulation Options : Un check all
+Click on Create a new AVD (Android Virtual Device e.g for Android 4.4.2 device  
+Name: "anyName"  
+Device: "Nexus 7 (7.02", 1200 * 1920:xhdpi)"    
+CPU/ABI: ARM(armeabi-v7a)    
+Keyboard: Yes Hardware  
+Target:  Android 4.4.2 (API level 19)  
+Skin: HVGA  
+Camera:  None  
+Memory: RAM 1024 VM Heap 32  
+Internal Storage: 200 MiB  
+SD Card :  Size 100 MiB  
+Emulation Options : Un check all  
 
     
 
-3) Open "pom.xml" 
-Scroll to Profile section : - Choose desired profile e.g "dev" for running locally
+Framework setup steps for connecting to a Physical Device
+============================
+Connect the physical mobile device
 
-Set <browser>appium</browser> (For running Native Apps)
-Set <browser>chrome</browser> (For running Web Apps)
+open command prompt or terminal window and enter the below command  
+"adb devices"    
+The detected device should now be in the list. If the device is still not detected add supported driver e.g Samsung Kies for Samsung phones on your host machine
+ 
+ 
+
+Appium Server Configuration
+============================
+Open Appium Server  
+Click On General Settings: -    
+Note the server url and port for Appium  
+
+Click On Developer Settings: -  
+Select Enabled checkbox  
+
+Start the server by clicking on Play button  
 
 
-
-            <properties>
-                            <!-- Application under test-->
-                            <platform>win64</platform>
-                            <!--Desired browser to run e.g firefox,chrome,iexplore,phantomjs, appium, sauce -->
+Run Web App Tests on Android Emulated Device or Physical Device using Chrome Browser   
+============================  
+Open "pom.xml" (For running Web Apps)   
+Scroll to Profile section : - Choose desired profile e.g "dev" for running locally  
+Set  
+           
+           <!--platform to run e.g linux64, mac32, win32, win64, Android-->
+                            <platform>Android</platform>
+           <!--Desired browser to run e.g firefox,chrome,iexplore,phantomjs, appium, sauce -->
                             <browser>appium</browser>
-                            <!--Location of Chrome, IE, PhantomJs Drivers installed, normally in your project source code under tools-->
-                            <!-- Below is windows example. Linux example  home/dev/src/cucumber_testng_java/tools-->
-                            <!-- If set to DEFAULT_PATH, will try to access from default path location valid for FIREFOX Driver-->
-                            <driver.root.dir>DEFAULT_PATH</driver.root.dir>
-                            <!--To Run parallel Test suite specify the type of Run Files which can be run in parallel -->
-                            <testToRun>**/*ATSuite.class</testToRun>
-            
-            
-                        </properties>
+
+Open WebDriverHelper and configure appium desired capabilites as per the configuration needed. e.g.
+
+```
+private static DesiredCapabilities getAppiumDesiredCapabilities() {
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability("device", "Android");
+        capabilities.setCapability(MobileCapabilityType.APP, "Chrome");
+        capabilities.setCapability(MobileCapabilityType.BROWSER_NAME, "");
+        capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, PLATFORM);
+        capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "42f7ab1fb7b59fab");
+        return capabilities;
+    }
+    ```
+    
+Run Native App Tests on Android Emulated Device or Physical Device using .apk file   
+============================  
+Android Native Mobile apps are automated using  
+  1) AndroidHelper.class
+  2) AndroidObject.class
+  3) Appium and Android Driver
+
+Android Page Objects
+-------------------------------------------------------------------
+Every Mobile Page  class extends "AndroidObject.class" to make use of the AndroidDriver Object and utility functions.  
+  
+Location: /home/dev/src/salmonAutomationFramework/src/test/java/com/salmon/test/pageobjects/mobile
+Directory structure: Group common Page Objects classes in a single directory e.g Login Functionality Classes in Login Directory      
+File Conventions:Every Class file ends with Page.class (Homepage.class)  
+
+Example:   
 
 
+    public class MobileContactsPage extends AndroidObject {
+    
+    private By addContactButton = By.name("Add Contact");
+    private String contactFormFields = ("android.widget.EditText");
+    
+    public void clickOnAddContact() {
+        getAndroidDriver().findElement(addContactButton).click();
+    }
+
+    public List<AndroidElement> getContactFormFields(){
+        return getAndroidDriver().findElementsByClassName(contactFormFields);
+    }
+
+
+
+
+    

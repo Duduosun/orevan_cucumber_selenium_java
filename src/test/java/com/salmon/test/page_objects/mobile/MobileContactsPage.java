@@ -1,4 +1,4 @@
-package com.salmon.test.page_objects;
+package com.salmon.test.page_objects.mobile;
 
 import com.salmon.test.framework.AndroidObject;
 import io.appium.java_client.android.AndroidElement;

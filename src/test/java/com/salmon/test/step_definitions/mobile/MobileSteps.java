@@ -1,7 +1,7 @@
 package com.salmon.test.step_definitions.mobile;
 
 import com.salmon.test.framework.helpers.utils.RandomGenerator;
-import com.salmon.test.page_objects.MobileContactsPage;
+import com.salmon.test.page_objects.mobile.MobileContactsPage;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.When;
 

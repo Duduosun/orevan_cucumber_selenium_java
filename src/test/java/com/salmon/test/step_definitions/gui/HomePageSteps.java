@@ -1,7 +1,7 @@
 package com.salmon.test.step_definitions.gui;
 
 
-import com.salmon.test.page_objects.HomePage;
+import com.salmon.test.page_objects.gui.HomePage;
 import cucumber.api.java.en.Given;
 
 public class HomePageSteps {
