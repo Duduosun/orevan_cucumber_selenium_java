@@ -51,12 +51,12 @@ public class WebDriverHelper extends EventFiringWebDriver {
         SELENIUM_HOST = System.getProperty("driverhost");
         SELENIUM_PORT = System.getProperty("driverport");
         FILE_SEPARATOR = System.getProperty("file.separator");
-        PLATFORM = LoadProperties.getRunProps().getProperty("platform");
-        BROWSER = LoadProperties.getRunProps().getProperty("browser");
-        BROWSER_WINDOW_WIDTH = Integer.parseInt(LoadProperties.getRunProps().getProperty("browser.width"));
-        BROWSER_WINDOW_HEIGHT = Integer.parseInt(LoadProperties.getRunProps().getProperty("browser.height"));
+        PLATFORM = LoadProperties.getProps().getProperty("platform");
+        BROWSER = LoadProperties.getProps().getProperty("browser");
+        BROWSER_WINDOW_WIDTH = Integer.parseInt(LoadProperties.getProps().getProperty("browser.width"));
+        BROWSER_WINDOW_HEIGHT = Integer.parseInt(LoadProperties.getProps().getProperty("browser.height"));
         BROWSER_WINDOW_SIZE = new Dimension(BROWSER_WINDOW_WIDTH, BROWSER_WINDOW_HEIGHT);
-        DRIVER_ROOT_DIR = LoadProperties.getRunProps().getProperty(
+        DRIVER_ROOT_DIR = LoadProperties.getProps().getProperty(
                 "driver.root.dir");
 
         if (!DRIVER_ROOT_DIR.equals("DEFAULT_PATH")) {

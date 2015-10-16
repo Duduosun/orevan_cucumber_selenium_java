@@ -29,7 +29,7 @@ public class ApiSteps extends ApiHelper {
     public void I_perform_GET_request_for_endpoint(String endpoint) {
 
         given().contentType(ContentType.JSON);
-        response = when().get(UrlBuilder.getApiUrlForEndPoint(endpoint));
+        response = when().get(UrlBuilder.getUrl(endpoint));
     }
 
     /*   Verify HTTP Status code from response*/
