@@ -1,14 +1,14 @@
 package com.salmon.test.framework.helpers;
 
-import static java.lang.System.out;
 import lombok.Getter;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
+
+import static java.lang.System.out;
 
 class LoadProperties {
 	 private static final Logger LOG = LoggerFactory.getLogger(LoadProperties.class);

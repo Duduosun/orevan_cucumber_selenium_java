@@ -47,7 +47,6 @@ The test automation framework is comprised of following tools and libraries
 *Git OR SVN: - Version Control  
 *Github or Local Git Server: - Git repository hosted server  
 *Intellij Or Eclipse: - Integrated Development Environment  
-*Hamcrest: - Matcher's  
 *Loggers: - Simple Logging Facade for Java  
 *Resource Bundle: - Supporting i18n Localisation and Externalise String 
 *Joda-Time: - Java Date time Api  

@@ -1,7 +1,5 @@
 package com.salmon.test.framework.helpers;
 
-import lombok.Getter;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
