@@ -21,10 +21,10 @@ public class DatabaseHelper {
     private static Connection conn = null;
 
     static {
-        jdbcUrl = LoadProperties.getRunProps().getProperty("jdbcUrl");
-        jdbcDriver = LoadProperties.getRunProps().getProperty("jdbcDriver");
-        jdbcUser = LoadProperties.getRunProps().getProperty("jdbcUser");
-        jdbcPwd = LoadProperties.getRunProps().getProperty("jdbcPwd");
+        jdbcUrl = LoadProperties.getProps().getProperty("jdbcUrl");
+        jdbcDriver = LoadProperties.getProps().getProperty("jdbcDriver");
+        jdbcUser = LoadProperties.getProps().getProperty("jdbcUser");
+        jdbcPwd = LoadProperties.getProps().getProperty("jdbcPwd");
 
     }
 

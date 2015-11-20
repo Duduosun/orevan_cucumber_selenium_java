@@ -2,6 +2,7 @@ package com.salmon.test.framework.helpers;
 
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
+
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -18,6 +19,7 @@ public class AndroidHelper extends EventFiringWebDriver {
     private static final Logger LOG = LoggerFactory
             .getLogger(AndroidHelper.class);
     private static AndroidDriver<WebElement> ANDROID_DRIVER = null;
+    private static final String RUN_CONFIG_PROPERTIES = "/environment.properties";
     private static final Thread CLOSE_THREAD = new Thread() {
 
         @Override
@@ -27,7 +29,7 @@ public class AndroidHelper extends EventFiringWebDriver {
     };
 
     static {
-        LoadProperties.loadRunConfigProps();
+        LoadProperties.loadRunConfigProps(RUN_CONFIG_PROPERTIES);
         ANDROID_DRIVER = startAppiumDriver();
         Runtime.getRuntime().addShutdownHook(CLOSE_THREAD);
     }
