@@ -1,20 +1,23 @@
 package com.salmon.test.models.api;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonInclude;
+//import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+//import com.fasterxml.jackson.annotation.JsonInclude;
+
+import com.google.gson.annotations.Expose;
 import lombok.Data;
 
 import java.util.List;
 
 @Data
-@JsonIgnoreProperties(ignoreUnknown = true)
-@JsonInclude(JsonInclude.Include.NON_NULL)
+//@JsonIgnoreProperties(ignoreUnknown = true)
+//@JsonInclude(JsonInclude.Include.NON_NULL)
 public class ResponseModel {
     List<Colors> colors;
     List<Hues> hues;
 
     @Data
     public class Colors {
+        @Expose(serialize = false, deserialize = false)
         String colorSpaceId;
         String sensation;
         String hue;

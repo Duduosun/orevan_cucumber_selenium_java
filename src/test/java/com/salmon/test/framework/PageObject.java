@@ -416,7 +416,7 @@ public abstract class PageObject {
      *
      * @param key
      **/
-    public String getB2cProp(String key) {
+    public String getMessage(String key) {
 
         if ((key == null) || key.isEmpty()) {
             return "";
