@@ -12,10 +12,8 @@ import static com.jayway.restassured.RestAssured.given;
  * Every Api Step definition class should extend this class
  */
 
-public abstract class ApiHelper {
-
+public class ApiHelper {
     private static Gson gson;
-
     static {
         RestAssured.baseURI = UrlBuilder.getBasePathURI().toString();
     }
@@ -38,5 +36,6 @@ public abstract class ApiHelper {
         gson = gsonBuilder.create();
         return gson;
     }
+
 
 }
