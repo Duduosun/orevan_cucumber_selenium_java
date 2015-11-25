@@ -48,6 +48,7 @@ public class WebDriverHelper extends EventFiringWebDriver {
     private static Integer BROWSER_WINDOW_HEIGHT;
 
     static {
+        LoadProperties.loadRunConfigProps("/environment.properties");
         SELENIUM_HOST = System.getProperty("driverhost");
         SELENIUM_PORT = System.getProperty("driverport");
         FILE_SEPARATOR = System.getProperty("file.separator");
