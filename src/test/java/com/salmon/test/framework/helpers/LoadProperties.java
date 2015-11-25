@@ -10,7 +10,7 @@ import java.util.Properties;
 
 import static java.lang.System.out;
 
-class LoadProperties {
+public class LoadProperties {
 	 private static final Logger LOG = LoggerFactory.getLogger(LoadProperties.class);
 	    @Getter
 	    private static Properties environmentProps;

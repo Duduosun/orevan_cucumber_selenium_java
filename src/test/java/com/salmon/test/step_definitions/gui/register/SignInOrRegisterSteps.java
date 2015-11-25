@@ -45,6 +45,6 @@ public class SignInOrRegisterSteps {
 
     @Then("^i can see the validation message \"(.*?)\"$")
     public void i_can_see_the_validation_message(String expectedErrorMessage) throws Throwable {
-        Assert.assertTrue(signInOrRegisterPage.getErrorMessage().contains(signInOrRegisterPage.getProps().getString(expectedErrorMessage)), "Verify Error Message");
+        Assert.assertTrue(signInOrRegisterPage.getErrorMessage().contains(signInOrRegisterPage.getResourceProps().getString(expectedErrorMessage)), "Verify Error Message");
     }
 }
