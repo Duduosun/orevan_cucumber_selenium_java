@@ -24,7 +24,6 @@ public class ApiSteps extends ApiHelper {
     private Response response;
 
 
-
 /*   Perform a HTTP GET request for a endpoint*/
 
     @When("^I perform GET request for \"([^\"]*)\" endpoint$")
@@ -51,21 +50,6 @@ public class ApiSteps extends ApiHelper {
 
     @Then("^the colour collections contains colour name$")
     public void the_colour_collections_contains_colour_name() {
-        String testJsonStringForValidatingGsonConfig = "{\n" +
-                "'colors':['colorSpaceId':'265772',{'schemes':{},'sensation':'pure','hue':'yellow','name':'Linwood Beach','colorId':'1034650','uriFriendlyName':'linwood-beach','rgb':'F3EEDC','collection':'extended'}],\n" +
-                "'hues':[{'hue':'red','name':'Reds and Pinks','color':'C02E2D','mutedName':'Muted Reds and Pinks','mutedRgb':'831C26','rgb':'C02E2D'},{'hue':'white','name':'Whites','color':'DDDDDD','mutedName':'Muted Whites','mutedRgb':'CCCCCC','rgb':'DDDDDD'}]\n" +
-                "}";
-
-        //Example with Custom Gson config
-        GsonBuilder gsonBuilder = new GsonBuilder();
-
-        Gson gson1 = Api.gson(gsonBuilder.serializeNulls());
-        ResponseModel responseModel1 = gson1.fromJson(testJsonStringForValidatingGsonConfig, ResponseModel.class);
-        assertThat(responseModel1.getColors().size()).isGreaterThan(0);
-        assertThat(responseModel1.getHues().size()).isGreaterThan(0);
-
-
-
         //Example with simple JsonPath
         List<String> colourNames = from(response.asString()).get("colors.name");
         assertThat(colourNames.size()).isGreaterThan(0);
@@ -76,14 +60,13 @@ public class ApiSteps extends ApiHelper {
         assertThat(colors.size()).isGreaterThan(0);
         assertThat(hues.size()).isGreaterThan(0);
 
-
         //Example with Gson
-        Gson gson = Api.gson();
+        Gson gson = new GsonBuilder().create();
 
         ResponseModel responseModel = gson.fromJson(response.asString(), ResponseModel.class);
+
         assertThat(responseModel.getColors().size()).isGreaterThan(0);
         assertThat(responseModel.getHues().size()).isGreaterThan(0);
-
 
     }
 
