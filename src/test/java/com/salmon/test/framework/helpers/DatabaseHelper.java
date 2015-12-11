@@ -1,5 +1,4 @@
 package com.salmon.test.framework.helpers;
-
 import org.apache.commons.dbutils.DbUtils;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.MapListHandler;
@@ -18,9 +17,14 @@ public class DatabaseHelper {
     private static final String jdbcDriver;
     private static final String jdbcUser;
     private static final String jdbcPwd;
+    private static final String RUN_CONFIG_PROPERTIES = "/environment.properties";
     private static Connection conn = null;
+    private static QueryRunner run;
+
 
     static {
+        LoadProperties.loadRunConfigProps(RUN_CONFIG_PROPERTIES);
+
         jdbcUrl = LoadProperties.getProps().getProperty("jdbcUrl");
         jdbcDriver = LoadProperties.getProps().getProperty("jdbcDriver");
         jdbcUser = LoadProperties.getProps().getProperty("jdbcUser");
@@ -28,20 +32,7 @@ public class DatabaseHelper {
 
     }
 
-    /**
-     * Executes the sql Query and returns the results in list format
-     *
-     * @param sqlQuery Specify sql query in String format
-     */
-
-    protected static List executeQuery(String sqlQuery) throws SQLException {
-        conn = setUpConnection();
-        QueryRunner run = new QueryRunner();
-        return run.query(conn, sqlQuery, new MapListHandler());
-    }
-
-
-    private static Connection setUpConnection() {
+    protected static Connection setUpConnection() {
 
         try {
             DbUtils.loadDriver(jdbcDriver);
@@ -54,5 +45,18 @@ public class DatabaseHelper {
             DbUtils.closeQuietly(conn);
         }
         return conn;
+    }
+
+    /**
+     * Executes the sql Query and returns the results in list format
+     *
+     * @param sqlQuery Specify sql query in String format
+     */
+    public List executeQuery(String sqlQuery) throws SQLException {
+        return getQueryRunner().query(setUpConnection(), sqlQuery, new MapListHandler());
+    }
+
+    protected QueryRunner getQueryRunner() {
+        return new QueryRunner();
     }
 }

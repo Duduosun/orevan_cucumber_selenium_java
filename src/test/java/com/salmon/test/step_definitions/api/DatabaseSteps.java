@@ -1,28 +1,50 @@
 package com.salmon.test.step_definitions.api;
-
-import com.salmon.test.framework.helpers.DatabaseHelper;
+import com.salmon.test.models.database.UserRegModel;
+import com.salmon.test.sql.UserRegDB;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import org.testng.Assert;
 
 import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * Step Definition implementation class for Cucumber Steps defined in Feature file
  */
-
-public class DatabaseSteps extends DatabaseHelper {
-
+public class DatabaseSteps {
+    private UserRegDB userRegDB;
     private List results;
+    private List<UserRegModel> userRegModels;
 
-    @When("^I run the query to get list of users \"(.*?)\" from mysql database$")
-    public void i_run_the_query_to_get_list_of_users_from_mysql_database(String sqlQuery) throws Throwable {
-        results = DatabaseHelper.executeQuery(sqlQuery);
-
+    public DatabaseSteps(UserRegDB userRegDB) {
+        this.userRegDB = userRegDB;
     }
 
-    @Then("^the list of users is \"(.*?)\"$")
-    public void the_list_of_users_is(String checkResult) throws Throwable {
-        Assert.assertTrue(results.size() > 0);
+    @When("^I run query \"([^\"]*)\" to get list of users in record set$")
+    public void I_run_query_to_get_list_of_users_in_record_set(String sqlQuery) throws Throwable {
+        results = userRegDB.executeQuery(sqlQuery);
+    }
+
+    @When("^I run query \"([^\"]*)\" to get list of users in bean$")
+    public void I_run_query_to_get_list_of_users_in_bean(String sqlQuery) throws Throwable {
+        userRegModels = userRegDB.getUserRegResults(sqlQuery);
+    }
+
+    @Then("^the list of users is not empty$")
+    public void the_list_of_users_is_not_empty() throws Throwable {
+        assertThat(results.size()).isGreaterThan(0);
+    }
+
+    @Then("^the list of users contains \"([^\"]*)\"$")
+    public void the_list_of_users_contains(String userName) throws Throwable {
+        boolean userFound = false;
+        List<UserRegModel> userRegModels = this.userRegModels;
+        for (UserRegModel userRegModel : userRegModels) {
+            if (userRegModel.getLogonId().contains(userName)) {
+                userFound = true;
+                break;
+            }
+        }
+        assertThat(userFound).isTrue();
     }
 }

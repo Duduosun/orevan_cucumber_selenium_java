@@ -78,9 +78,8 @@
         <java-version>1.8</java-version>
         <mysql>5.1.6</mysql>
         <db2.version>3.8.47</db2.version>
+        <oracle.version>10.2.0.5</oracle.version>
         <maven-install-plugin>2.3.1</maven-install-plugin>
-
-
     </properties>
 
 
@@ -188,6 +187,22 @@
                 <artifactId>maven-install-plugin</artifactId>
                 <version>${maven-install-plugin}</version>
                 <executions>
+                    <execution>
+                        <id>oracle-jar-install</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>install-file</goal>
+                        </goals>
+                        <configuration>
+                            <file>${project.basedir}/tools/lib/ojdbc14.jar</file>
+                            <groupId>com.oracle</groupId>
+                            <artifactId>ojdbc14</artifactId>
+                            <version>${oracle.version}</version>
+                            <packaging>jar</packaging>
+                            <generatePom>true</generatePom>
+                        </configuration>
+                    </execution>
+
                     <execution>
                         <id>db2jcc-jar-install</id>
                         <phase>validate</phase>
@@ -415,6 +430,13 @@
             <version>${db2.version}</version>
         </dependency>
 
+        <!--oracle database dependency-->
+        <dependency>
+            <groupId>com.oracle</groupId>
+            <artifactId>ojdbc14</artifactId>
+            <version>${oracle.version}</version>
+        </dependency>
+        <!--oracle database dependency-->
     </dependencies>
 
 
