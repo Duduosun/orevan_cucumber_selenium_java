@@ -77,6 +77,10 @@
         <joda-time>2.5</joda-time>
         <java-version>1.8</java-version>
         <mysql>5.1.6</mysql>
+        <db2.version>3.8.47</db2.version>
+        <maven-install-plugin>2.3.1</maven-install-plugin>
+
+
     </properties>
 
 
@@ -179,7 +183,44 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-install-plugin</artifactId>
+                <version>${maven-install-plugin}</version>
+                <executions>
+                    <execution>
+                        <id>db2jcc-jar-install</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>install-file</goal>
+                        </goals>
+                        <configuration>
+                            <file>${project.basedir}/tools/lib/db2jcc.jar</file>
+                            <groupId>com.ibm.db2.jcc</groupId>
+                            <artifactId>db2jcc</artifactId>
+                            <version>${db2.version}</version>
+                            <packaging>jar</packaging>
+                            <generatePom>true</generatePom>
+                        </configuration>
+                    </execution>
 
+                    <execution>
+                        <id>db2jcc_license-jar-install</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>install-file</goal>
+                        </goals>
+                        <configuration>
+                            <file>${project.basedir}/tools/lib/db2jcc_license_cu.jar</file>
+                            <groupId>com.ibm.db2.jcc</groupId>
+                            <artifactId>db2jcc_license_cu</artifactId>
+                            <version>${db2.version}</version>
+                            <packaging>jar</packaging>
+                            <generatePom>true</generatePom>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
 
         </plugins>
 
@@ -359,5 +400,22 @@
             <version>${mysql}</version>
         </dependency>
         <!--mysql database driver-->
+
+
+        <!--DB2 database dependency-->
+        <dependency>
+            <groupId>com.ibm.db2.jcc</groupId>
+            <artifactId>db2jcc</artifactId>
+            <version>${db2.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.ibm.db2.jcc</groupId>
+            <artifactId>db2jcc_license_cu</artifactId>
+            <version>${db2.version}</version>
+        </dependency>
+
     </dependencies>
+
+
 </project>

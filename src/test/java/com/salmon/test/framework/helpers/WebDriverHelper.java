@@ -29,7 +29,6 @@ public class WebDriverHelper extends EventFiringWebDriver {
             .getLogger(WebDriverHelper.class);
     private static RemoteWebDriver REAL_DRIVER = null;
     private static final Thread CLOSE_THREAD = new Thread() {
-
         @Override
         public void run() {
             REAL_DRIVER.quit();
@@ -93,9 +92,12 @@ public class WebDriverHelper extends EventFiringWebDriver {
         }
         Runtime.getRuntime().addShutdownHook(CLOSE_THREAD);
     }
-
     private WebDriverHelper() {
         super(REAL_DRIVER);
+    }
+
+    public static WebDriver getWebDriver() {
+        return REAL_DRIVER;
     }
 
     private static String getDriverPath() {
@@ -279,9 +281,6 @@ public class WebDriverHelper extends EventFiringWebDriver {
         return new RemoteWebDriver(new URL(SELENIUM_REMOTE_URL), (capabilities));
     }
 
-    public static WebDriver getWebDriver() {
-        return REAL_DRIVER;
-    }
 
     @Override
     public void close() {

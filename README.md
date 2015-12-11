@@ -3,16 +3,17 @@
 Salmon Test Automation Framework
 ================================
 This project is a template for Salmon's test automation framework, which provides structured and standard way of 
-creating automated test scripts for GUI, Mobile and API level tests across salmon projects  
+creating automated test scripts for GUI, Mobile, API and Database level tests across salmon projects  
 
-This is a reusable automation framework that blends together Selenium WebDriver, Appium, Android Driver, RestEasy, SauceLabs and Cucumber JVM (incorporating Gherkin and the BDD 'Given, When Then' testing construct)   
+This is a reusable automation framework that blends together Selenium WebDriver, Appium, Android Driver, RestEasy, Database, SauceLabs and Cucumber JVM (incorporating Gherkin and the BDD 'Given, When Then' testing construct)   
 
 This framework supports automation of : - 
 *Web Browsers (Firefox, Chrome, Internet Explorer, Safari)  
 *Web Browser Responsive Design with view ports configuration  
 *Mobile Automation on Emulated and Physical Devices, for Native, Hybrid, and Web App  
-*Mobile Automation on Cloud using SauceLabs
-  
+*Mobile Automation on Cloud using SauceLabs  
+*Api using RestEasy  
+*Database tests including support for IBM DB2    
 
 The framework incorporates design principle of BDD (Behaviour driven development) which promotes
  writing acceptance tests by describing behaviour of application under test in simple english language from
@@ -52,8 +53,9 @@ The test automation framework is comprised of following tools and libraries
 *Joda-Time: - Java Date time Api  
 *SonarQube (optional): - Code Quality and Code Coverage  
 *DbUtils Mysql (optional): - Java Database utility api  
+*DB2 and Open JDBC: - IBM database API   
 *Rest-Assured (optional): - Restful Api framework     
-*PhantomJsDriver, GhostDriver: - Full web stack No browser required supporting headless testing
+*PhantomJsDriver, GhostDriver: - Full web stack No browser required supporting headless testing  
 *AssertJ: - Used for multiple assertions for further info visit this site (http://joel-costigliola.github.io/assertj/)
 
 Contact information
@@ -144,7 +146,7 @@ Import Project into Intellij
 File>Import Project>
 Browse to SalmonAutomationFramework
 
-
+run "mvn validate" (To Resolve DB2 dependencies)
 
 Import Project into Eclipse
 --------------------------
@@ -155,7 +157,9 @@ Finish
 
 open terminal
 cd to test root directory
-run "mvn clean eclipse:eclipse" 
+run "mvn clean eclipse:eclipse"
+ 
+run "mvn validate" (To Resolve DB2 dependencies)
 
 
 
