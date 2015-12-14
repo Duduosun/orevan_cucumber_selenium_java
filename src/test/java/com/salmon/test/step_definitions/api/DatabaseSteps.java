@@ -1,5 +1,4 @@
 package com.salmon.test.step_definitions.api;
-
 import com.salmon.test.framework.helpers.Props;
 import com.salmon.test.models.database.UserRegModel;
 import com.salmon.test.sql.UserRegDB;
@@ -7,7 +6,6 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
 import java.util.List;
-import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -41,7 +39,7 @@ public class DatabaseSteps {
     @Then("^the list of users contains \"([^\"]*)\" as a user$")
     public void the_list_of_users_contains_as_a_user(String userName) throws Throwable {
         List<UserRegModel> userRegModels = this.userRegModels;
-        Optional<Boolean> user = userRegModels.stream().map(userRegMode -> userRegMode.getLogonId().contains(userName)).findFirst();
-        assertThat(user.isPresent()).isTrue();
+        boolean user = userRegModels.stream().map(userRegMode -> userRegMode.getLogonId().contains(userName)).findFirst().get();
+        assertThat(user).isTrue();
     }
 }
