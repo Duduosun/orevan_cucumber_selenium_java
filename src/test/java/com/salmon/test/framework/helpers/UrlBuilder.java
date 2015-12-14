@@ -6,21 +6,18 @@ import org.slf4j.LoggerFactory;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URL;
-import java.util.Properties;
 
 public class UrlBuilder {
 	 private static final Logger LOG = LoggerFactory.getLogger(UrlBuilder.class);
 	    private static final String RUN_CONFIG_PROPERTIES = "/environment.properties";
 	    private static URL basePath;
 	    private static URL apiUrl;
-		private static Properties runProps;
 
 	    static {
 	    try {
-	        LoadProperties.loadRunConfigProps(RUN_CONFIG_PROPERTIES);
-	        runProps = LoadProperties.getProps();
-	        basePath = new URL(runProps.getProperty("site.url"));
-	        apiUrl = new URL(runProps.getProperty("api.url"));
+	        Props.loadRunConfigProps(RUN_CONFIG_PROPERTIES);
+	        basePath = new URL(Props.getProp("site.url"));
+	        apiUrl = new URL(Props.getProp("api.url"));
 
 	    } catch (MalformedURLException e) {
 	        LOG.error(e.getMessage());
@@ -37,13 +34,13 @@ public class UrlBuilder {
 	    }
 
 	public static URI getBasePathURI() {
-			return URI.create(runProps.getProperty("api.url"));
+			return URI.create(Props.getProp("api.url"));
 			}
 
 
 
 	    public static String getUrl(String applicationUrl) {
-	        return runProps.getProperty(applicationUrl);
+	        return Props.getProp(applicationUrl);
 	    }
 
 	    public static URL createApiUrl(String endpoint) {

@@ -1,5 +1,6 @@
 package com.salmon.test.step_definitions.gui.register;
 
+import com.salmon.test.framework.helpers.Props;
 import com.salmon.test.page_objects.gui.SignInOrRegisterPage;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
@@ -46,6 +47,6 @@ public class SignInOrRegisterSteps {
 
     @Then("^i can see the validation message \"(.*?)\"$")
     public void i_can_see_the_validation_message(String expectedErrorMessage) throws Throwable {
-        assertThat(signInOrRegisterPage.getErrorMessage()).contains(signInOrRegisterPage.getMessage(expectedErrorMessage));
+        assertThat(signInOrRegisterPage.getErrorMessage()).contains(Props.getMessage(expectedErrorMessage));
     }
 }

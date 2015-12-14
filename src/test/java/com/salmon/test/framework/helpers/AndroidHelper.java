@@ -26,7 +26,7 @@ public class AndroidHelper extends EventFiringWebDriver {
     };
 
     static {
-        LoadProperties.loadRunConfigProps(RUN_CONFIG_PROPERTIES);
+        Props.loadRunConfigProps(RUN_CONFIG_PROPERTIES);
         ANDROID_DRIVER = startAppiumDriver();
         Runtime.getRuntime().addShutdownHook(CLOSE_THREAD);
     }

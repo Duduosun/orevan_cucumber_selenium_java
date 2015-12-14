@@ -23,12 +23,12 @@ public class DatabaseHelper {
 
 
     static {
-        LoadProperties.loadRunConfigProps(RUN_CONFIG_PROPERTIES);
+        Props.loadRunConfigProps(RUN_CONFIG_PROPERTIES);
 
-        jdbcUrl = LoadProperties.getProps().getProperty("jdbcUrl");
-        jdbcDriver = LoadProperties.getProps().getProperty("jdbcDriver");
-        jdbcUser = LoadProperties.getProps().getProperty("jdbcUser");
-        jdbcPwd = LoadProperties.getProps().getProperty("jdbcPwd");
+        jdbcUrl = Props.getProp("jdbcUrl");
+        jdbcDriver = Props.getProp("jdbcDriver");
+        jdbcUser = Props.getProp("jdbcUser");
+        jdbcPwd = Props.getProp("jdbcPwd");
 
     }
 
