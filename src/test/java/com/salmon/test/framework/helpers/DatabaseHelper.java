@@ -52,11 +52,11 @@ public class DatabaseHelper {
      *
      * @param sqlQuery Specify sql query in String format
      */
-    public List executeQuery(String sqlQuery) throws SQLException {
+    public static List executeQuery(String sqlQuery) throws SQLException {
         return getQueryRunner().query(setUpConnection(), sqlQuery, new MapListHandler());
     }
 
-    protected QueryRunner getQueryRunner() {
+    protected static QueryRunner getQueryRunner() {
         return new QueryRunner();
     }
 }

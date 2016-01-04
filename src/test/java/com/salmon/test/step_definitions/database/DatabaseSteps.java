@@ -1,4 +1,6 @@
-package com.salmon.test.step_definitions.api;
+package com.salmon.test.step_definitions.database;
+
+import com.salmon.test.framework.helpers.DatabaseHelper;
 import com.salmon.test.framework.helpers.Props;
 import com.salmon.test.models.database.UserRegModel;
 import com.salmon.test.sql.UserRegDB;
@@ -23,7 +25,7 @@ public class DatabaseSteps {
 
     @When("^I run query \"([^\"]*)\" to get list of users in record set$")
     public void I_run_query_to_get_list_of_users_in_record_set(String sqlQuery) throws Throwable {
-        results = userRegDB.executeQuery(Props.getMessage(sqlQuery));
+        results = DatabaseHelper.executeQuery(Props.getMessage(sqlQuery));
     }
 
     @When("^I run query \"([^\"]*)\" to get list of users in bean$")
