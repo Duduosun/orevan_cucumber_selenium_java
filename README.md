@@ -46,7 +46,7 @@ The test automation framework is comprised of following tools and libraries
 *Lombok: - Java utility api  
 *PicoContainer: - Standard Dependency Injection     
 *Git OR SVN: - Version Control  
-*Github or Local Git Server: - Git repository hosted server  
+*Gitlab or Local Git Server: - Git repository hosted server  
 *Intellij Or Eclipse: - Integrated Development Environment  
 *Loggers: - Simple Logging Facade for Java  
 *Resource Bundle: - Supporting i18n Localisation and Externalise String 
@@ -56,7 +56,8 @@ The test automation framework is comprised of following tools and libraries
 *DB2 and Open JDBC: - IBM database API   
 *Rest-Assured (optional): - Restful Api framework     
 *PhantomJsDriver, GhostDriver: - Full web stack No browser required supporting headless testing  
-*AssertJ: - Used for multiple assertions for further info visit this site (http://joel-costigliola.github.io/assertj/)
+*AssertJ: - Used for multiple assertions for further info visit this site (http://joel-costigliola.github.io/assertj/)  
+*PODAM:- Auto random data generator for models
 
 Contact information
 ===================

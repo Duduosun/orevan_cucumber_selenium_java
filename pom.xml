@@ -80,6 +80,7 @@
         <db2.version>3.8.47</db2.version>
         <oracle.version>10.2.0.5</oracle.version>
         <maven-install-plugin>2.3.1</maven-install-plugin>
+        <podam>6.0.2.RELEASE</podam>
     </properties>
 
 
@@ -437,6 +438,16 @@
             <version>${oracle.version}</version>
         </dependency>
         <!--oracle database dependency-->
+
+        <!--auto fill random data to POJO-->
+        <dependency>
+            <groupId>uk.co.jemos.podam</groupId>
+            <artifactId>podam</artifactId>
+            <version>${podam}</version>
+        </dependency>
+        <!--auto fill random data to POJO-->
+
+
     </dependencies>
 
 
