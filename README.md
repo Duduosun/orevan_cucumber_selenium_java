@@ -54,7 +54,8 @@ The test automation framework is comprised of following tools and libraries
 *SonarQube (optional): - Code Quality and Code Coverage  
 *DbUtils Mysql (optional): - Java Database utility api  
 *DB2 and Open JDBC: - IBM database API   
-*Rest-Assured (optional): - Restful Api framework     
+*Rest-Assured (optional): - Restful Api framework
+*GSON : - Java serialization/deserialization library that can convert Java Objects into JSON and back. 
 *PhantomJsDriver, GhostDriver: - Full web stack No browser required supporting headless testing  
 *AssertJ: - Used for multiple assertions for further info visit this site (http://joel-costigliola.github.io/assertj/)  
 *PODAM:- Auto random data generator for models

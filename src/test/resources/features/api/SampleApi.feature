@@ -12,8 +12,8 @@ Feature: Sample Api tests to demonstrate CRUD operation Database tests
   Scenario: Create an Item
     When I create an Item
       | itemType | itemName |
-      | tablet   | ipad     |
-      | mobile   | iphone   |
+      | TABLET   | ipad     |
+      | MOBILE   | iphone   |
 
     Then the Item is "created"
 
@@ -21,8 +21,8 @@ Feature: Sample Api tests to demonstrate CRUD operation Database tests
   Scenario: Update an Item
     When I update an Item
       | itemType | itemName |
-      | tablet   | tab pro  |
-      | mobile   | note 5   |
+      | TABLET   | tab pro  |
+      | MOBILE   | note 5   |
     Then the Item is "updated"
 
   @dummy

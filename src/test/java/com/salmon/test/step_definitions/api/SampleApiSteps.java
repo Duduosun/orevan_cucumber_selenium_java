@@ -6,7 +6,7 @@ import com.jayway.restassured.response.Response;
 import com.salmon.test.framework.helpers.ApiHelper;
 import com.salmon.test.models.api.ItemModel;
 import com.salmon.test.models.api.ResponseModel;
-import com.salmon.test.services.Api;
+import com.salmon.test.services.SampleApi;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
@@ -19,7 +19,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * Step Definition implementation class for Cucumber Steps defined in Feature file
  */
 
-public class ApiSteps extends ApiHelper {
+public class SampleApiSteps extends ApiHelper {
 
     private Response response;
 
@@ -28,7 +28,7 @@ public class ApiSteps extends ApiHelper {
 
     @When("^I perform GET request for \"([^\"]*)\" endpoint$")
     public void I_perform_GET_request_for_endpoint(String endpoint) {
-        response = Api.getListOfColours(endpoint);
+        response = SampleApi.getListOfColours(endpoint);
     }
 
     /*   Verify HTTP Status code from response*/
@@ -73,29 +73,33 @@ public class ApiSteps extends ApiHelper {
 
     @When("^I create an Item$")
     public void I_create_an_Item(List<ItemModel> items) throws Throwable {
-        response = Api.postDetails(items);
+        response = SampleApi.postDetails(items);
     }
 
 
     @When("^I update an Item$")
     public void I_update_an_Item(List<ItemModel> items) throws Throwable {
-        response = Api.updateDetails(items);
+        response = SampleApi.updateDetails(items);
     }
 
     @When("^I delete an Item \"([^\"]*)\"$")
     public void I_delete_an_Item(String uniqueId) throws Throwable {
-        response = Api.deleteItem(uniqueId);
+        response = SampleApi.deleteItem(uniqueId);
     }
 
 
     @Then("^the Item is \"([^\"]*)\"$")
     public void the_Item_is(String result) throws Throwable {
-        if (result.equals("created")) {
-            assertThat(response.getStatusCode()).isEqualTo("201");
-        } else if (result.equals("updated")) {
-            assertThat(response.getStatusCode()).isEqualTo("201");
-        } else if (result.equals("deleted")) {
-            assertThat(response.getStatusCode()).isEqualTo("204");
+        switch (result) {
+            case "created":
+                assertThat(response.getStatusCode()).isEqualTo("201");
+                break;
+            case "updated":
+                assertThat(response.getStatusCode()).isEqualTo("201");
+                break;
+            case "deleted":
+                assertThat(response.getStatusCode()).isEqualTo("204");
+                break;
         }
 
     }

@@ -1,15 +1,14 @@
 package com.salmon.test.models.api;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
+import lombok.AccessLevel;
 import lombok.Data;
+import lombok.experimental.FieldDefaults;
 
-@JsonInclude(JsonInclude.Include.NON_NULL)
-@Data
+@FieldDefaults(level = AccessLevel.PRIVATE) // Removes necessity to specify access modifier for every fields
+@Data //  @Getter / @Setter and @RequiredArgsConstructor, @ToString, @EqualsAndHashCode,
 public class ItemModel {
-
+    String itemId;
     String itemType;
-    String uniqueId;
     String itemName;
-
-
+    String itemDescription;
 }

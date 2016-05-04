@@ -3,10 +3,11 @@ package com.salmon.test.services;
 import com.jayway.restassured.response.Response;
 import com.salmon.test.framework.helpers.ApiHelper;
 import com.salmon.test.models.api.ItemModel;
+import com.salmon.test.models.api.ItemsModel;
 
 import java.util.List;
 
-public class Api extends ApiHelper {
+public class SampleApi extends ApiHelper {
 
     public static final String PATH = "items/";
 
@@ -14,13 +15,19 @@ public class Api extends ApiHelper {
         return givenConfig().when().get(endpoint);
     }
 
-    public static Response postDetails(List<ItemModel> itemModels) {
-
-
+    public  static Response postDetails(List<ItemModel> itemModels) {
+        ItemsModel itemsData = buildItemsData(itemModels);
+        String payLoad = gson().toJson(itemsData);
         return givenConfig().
-                body(gson().toJson(itemModels)).
-                when().
+                body(payLoad).
                 post(PATH);
+    }
+
+    private static ItemsModel buildItemsData(List<ItemModel> itemModels) {
+
+        return ItemsModel.builder().id("123456").
+                items(itemModels).
+                build();
     }
 
 
