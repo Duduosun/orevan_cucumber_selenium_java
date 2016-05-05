@@ -10,9 +10,10 @@ import java.util.List;
 public class SampleApi extends ApiHelper {
 
     public static final String PATH = "items/";
+    public static final String COLOURS_PATH = "/en/api/products/colors";
 
-    public static Response getListOfColours(String endpoint) {
-        return givenConfig().when().get(endpoint);
+    public static Response getListOfColours() {
+        return givenConfig().when().get(COLOURS_PATH);
     }
 
     public  static Response postDetails(List<ItemModel> itemModels) {

@@ -1,13 +1,12 @@
-#Sample test scenario which gives an example of API or Service level testing
 @api
-Feature: Sample Api tests to demonstrate CRUD operation Database tests
+Feature: Sample CRUD operations to test a RESTful Service
 
-  Scenario: Sample  to query Restful service and get colour details from API
-    When I perform GET request for "/en/api/products/colors" endpoint
-    Then I get a 200 http status code
-    And the colour collections contains colour name
+  Scenario: Get the list of colours
+    When I get the list of colours
+    Then the Items are "retrieved"
+    And the colour collections contain colour name
 
-# Dummy examples will not run as there is not real Api to test
+# Test with @dummy tags  will fail as there is no real Service to test with.
   @dummy
   Scenario: Create an Item
     When I create an Item

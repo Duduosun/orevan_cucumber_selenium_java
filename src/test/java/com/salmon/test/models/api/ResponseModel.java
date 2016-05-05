@@ -2,18 +2,25 @@ package com.salmon.test.models.api;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Data;
+import lombok.experimental.FieldDefaults;
 
 import java.util.List;
 
+// Response Container model for Colors Model
+
+@Builder
 @Data
-@JsonIgnoreProperties(ignoreUnknown = true)
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@FieldDefaults(level = AccessLevel.PRIVATE) // Removes necessity to specify access modifier for every fields
 public class ResponseModel {
     List<Colors> colors;
-    List<Hues> hues;
 
+//Child Inner Class Colors
     @Data
+    @FieldDefaults(level = AccessLevel.PRIVATE) // Removes necessity to specify access modifier for every fields
+
     public class Colors {
         String colorSpaceId;
         String sensation;
@@ -23,16 +30,6 @@ public class ResponseModel {
         String uriFriendlyName;
         String rgb;
         String collection;
-    }
-
-    @Data
-    public class Hues {
-        String hue;
-        String name;
-        String color;
-        String mutedName;
-        String mutedRgb;
-        String rgb;
     }
 
 }

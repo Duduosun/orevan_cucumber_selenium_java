@@ -1,9 +1,7 @@
 package com.salmon.test.step_definitions.api;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.jayway.restassured.response.Response;
-import com.salmon.test.framework.helpers.ApiHelper;
 import com.salmon.test.models.api.ItemModel;
 import com.salmon.test.models.api.ResponseModel;
 import com.salmon.test.services.SampleApi;
@@ -19,24 +17,18 @@ import static org.assertj.core.api.Assertions.assertThat;
  * Step Definition implementation class for Cucumber Steps defined in Feature file
  */
 
-public class SampleApiSteps extends ApiHelper {
+public class SampleApiSteps {
 
     private Response response;
 
 
-/*   Perform a HTTP GET request for a endpoint*/
-
-    @When("^I perform GET request for \"([^\"]*)\" endpoint$")
-    public void I_perform_GET_request_for_endpoint(String endpoint) {
-        response = SampleApi.getListOfColours(endpoint);
+    /*   Perform a HTTP GET request for an endpoint*/
+    @When("^I get the list of colours$")
+    public void iGetTheListOfColours() throws Throwable {
+        response = SampleApi.getListOfColours();
     }
 
-    /*   Verify HTTP Status code from response*/
 
-    @Then("^I get a (\\d+) http status code$")
-    public void I_get_a_http_status_code(int statusCodeExpected) {
-        assertThat(response.statusCode()).isEqualTo(statusCodeExpected);
-    }
     /* Example with JsonPath to extract names of colour form JSON response
 
     * Convert Response Object to asString(), which is Json Representation
@@ -48,25 +40,20 @@ public class SampleApiSteps extends ApiHelper {
 
     */
 
-    @Then("^the colour collections contains colour name$")
-    public void the_colour_collections_contains_colour_name() {
+    @Then("^the colour collections contain colour name$")
+    public void the_colour_collections_contain_colour_name() {
+
         //Example with simple JsonPath
         List<String> colourNames = from(response.asString()).get("colors.name");
         assertThat(colourNames.size()).isGreaterThan(0);
 
         List<ResponseModel.Colors> colors = from(response.asString()).get("colors");
 
-        List<ResponseModel.Hues> hues = from(response.asString()).get("hues");
         assertThat(colors.size()).isGreaterThan(0);
-        assertThat(hues.size()).isGreaterThan(0);
 
-        //Example with Gson
-        Gson gson = new GsonBuilder().create();
-
+        Gson gson = SampleApi.gson();
         ResponseModel responseModel = gson.fromJson(response.asString(), ResponseModel.class);
-
         assertThat(responseModel.getColors().size()).isGreaterThan(0);
-        assertThat(responseModel.getHues().size()).isGreaterThan(0);
 
     }
 
@@ -87,20 +74,25 @@ public class SampleApiSteps extends ApiHelper {
         response = SampleApi.deleteItem(uniqueId);
     }
 
-
-    @Then("^the Item is \"([^\"]*)\"$")
+    /*   Verify HTTP Status code from response*/
+    @Then("^the (?:Item is|Items are) \"([^\"]*)\"$")
     public void the_Item_is(String result) throws Throwable {
+        int statusCode = response.getStatusCode();
         switch (result) {
-            case "created":
-                assertThat(response.getStatusCode()).isEqualTo("201");
+            case ("created"):
+
+                assertThat(statusCode).isEqualTo(201);
                 break;
             case "updated":
-                assertThat(response.getStatusCode()).isEqualTo("201");
+            case ("retrieved"):
+                assertThat(statusCode).isEqualTo(200);
                 break;
             case "deleted":
-                assertThat(response.getStatusCode()).isEqualTo("204");
+                assertThat(statusCode).isEqualTo(204);
                 break;
         }
 
     }
+
+
 }
