@@ -1,6 +1,9 @@
 ========================================================================
-**RESTful Services test automation**
-================================
+
+**RESTful Services Test Automation**
+
+========================================================================
+
 REST stands for Representational State Transfer, which is an architectural style for networked hypermedia applications, it is primarily used to build Web services that are lightweight, maintainable, and scalable
 
 Most commonly used Rest Operations listed below with standard success  HTTP Status Codes    
@@ -42,7 +45,7 @@ public static Gson gson() {
   
 ========================================================================
 
-**POST**
+**POST**  
 
 ========================================================================
 The POST verb is most-often utilized to **create** new resources. In particular, it's used to create subordinate resources. That is, subordinate to some other (e.g. parent) resource. 
@@ -146,7 +149,8 @@ private static ItemsModel buildItemsData(List<ItemModel> itemModels) {
 Location: src\test\java\com\salmon\test\services
 
 ========================================================================
-**PUT**
+
+**PUT**  
 
 ========================================================================
 Exactly same technique to be used as POST request. PUT is typically use for update operation
@@ -165,7 +169,8 @@ public static Response updateDetails(List<ItemModel> itemModels) {
  
  
 ========================================================================
-**DELETE**
+
+**DELETE**  
 
 ========================================================================
 Delete a resource identified by a URI.
@@ -208,10 +213,11 @@ public static Response deleteItem(String uniqueId) {
   
   
   
-  ========================================================================
-  **GET**
+========================================================================
+
+  **GET**  
   
-  ========================================================================
+========================================================================  
  The HTTP GET method is used to read (or retrieve) a representation of a resource. 
  
   BASE PATH : api.url which is Set in profiles/{profileName}/config.properties
@@ -255,8 +261,9 @@ public static Response deleteItem(String uniqueId) {
        
     
     
-========================================================================    
-**Response Mapping and Validation**
+========================================================================
+
+**Response Mapping and Validation**  
 
 ========================================================================
 The success of RESTful Operation is finally validated with the Response Object returned 
@@ -310,7 +317,3 @@ _Example with GSON to deserialize entire PayLoad from "response object" and stor
         
          //Validation for colour object collection is not empty
           assertThat(responseModel.getColors().size()).isGreaterThan(0);
-          
-
-    
-
