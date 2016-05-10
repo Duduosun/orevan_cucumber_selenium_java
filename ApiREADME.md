@@ -6,8 +6,8 @@ REST stands for Representational State Transfer, which is an architectural style
 Most commonly used Rest Operations listed below with standard success  HTTP Status Codes    
 
 | HTTP Verb  |CRUD|Success HTTP Status Codes|
-| -              |
-|POST        |Create|201 (Created)||
+| :------     |:------|:------|
+|POST        |Create|201 (Created)|
 | PUT  |Update/Replace|200 (OK) or 204 (No Content)|
 | GET  |Read|200 (OK)|
 | DELETE  |Delete|200 (OK)|
