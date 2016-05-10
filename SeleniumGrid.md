@@ -18,6 +18,8 @@ desired capabilities.
 *Selenium Node
 
 ***PLEASE NOTE*** Selenium Grid creates all the Json configuration so please DO NOT manually create the extra Json files. 
+TYPE SUDO FOR ANY CHANGES TO SELENIUM HUB IN TERMINAL
+
 
 **Selenium-HUB**
 Remote Desktop to Selenium Hub
@@ -25,7 +27,9 @@ Remote Desktop to Selenium Hub
 Use Windows LDAP
 Since this is a RedHat Linux box, user can connect it  via xRDP
  
-Selenium Grid Extras Installed at : home/softwares with role of hub
+Selenium Grid Extras Installed at : /opt/softwares with role of hub
+
+
 
 URL to access : -
 192.168.218.5:3000 (Selenium Grid Extras)
