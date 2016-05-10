@@ -48,6 +48,8 @@ public static Gson gson() {
 **POST**  
 
 ========================================================================
+
+
 The POST verb is most-often utilized to **create** new resources. In particular, it's used to create subordinate resources. That is, subordinate to some other (e.g. parent) resource. 
 
 BASE PATH : api.url which is Set in profiles/{profileName}/config.properties
@@ -153,6 +155,8 @@ Location: src\test\java\com\salmon\test\services
 **PUT**  
 
 ========================================================================
+
+
 Exactly same technique to be used as POST request. PUT is typically use for update operation
 Only difference is RESTful operation type is PUT 
 
@@ -173,6 +177,8 @@ public static Response updateDetails(List<ItemModel> itemModels) {
 **DELETE**  
 
 ========================================================================
+
+
 Delete a resource identified by a URI.
 
 BASE PATH : api.url which is Set in profiles/{profileName}/config.properties
@@ -217,7 +223,9 @@ public static Response deleteItem(String uniqueId) {
 
   **GET**  
   
-========================================================================  
+========================================================================
+
+
  The HTTP GET method is used to read (or retrieve) a representation of a resource. 
  
   BASE PATH : api.url which is Set in profiles/{profileName}/config.properties
@@ -266,9 +274,11 @@ public static Response deleteItem(String uniqueId) {
 **Response Mapping and Validation**  
 
 ========================================================================
+
+
 The success of RESTful Operation is finally validated with the Response Object returned 
 
-Common Types of Response validation
+Common Response validation
 *Status Code
 *Fields validation of returned PayLoad via De-serializing
 
