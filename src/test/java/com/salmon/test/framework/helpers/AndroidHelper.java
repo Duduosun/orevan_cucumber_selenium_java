@@ -13,8 +13,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public class AndroidHelper extends EventFiringWebDriver {
-    private static final Logger LOG = LoggerFactory
-            .getLogger(AndroidHelper.class);
+
     private static final String RUN_CONFIG_PROPERTIES = "/environment.properties";
     private static AndroidDriver<WebElement> ANDROID_DRIVER = null;
     private static final Thread CLOSE_THREAD = new Thread() {
