@@ -1,7 +1,5 @@
 package com.salmon.test.models.api;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Data;
@@ -17,7 +15,7 @@ import java.util.List;
 public class ResponseModel {
     List<Colors> colors;
 
-//Child Inner Class Colors
+    //Child Inner Class Colors
     @Data
     @FieldDefaults(level = AccessLevel.PRIVATE) // Removes necessity to specify access modifier for every fields
 

@@ -16,7 +16,7 @@ public class SampleApi extends ApiHelper {
         return givenConfig().when().get(COLOURS_PATH);
     }
 
-    public  static Response postDetails(List<ItemModel> itemModels) {
+    public static Response postDetails(List<ItemModel> itemModels) {
         ItemsModel itemsData = buildItemsData(itemModels);
         String payLoad = gson().toJson(itemsData);
         return givenConfig().
@@ -25,7 +25,7 @@ public class SampleApi extends ApiHelper {
                 //queryParam("").
                 //If there are Form Params in URL
                 //formParam("").
-                post(PATH);
+                        post(PATH);
     }
 
     private static ItemsModel buildItemsData(List<ItemModel> itemModels) {

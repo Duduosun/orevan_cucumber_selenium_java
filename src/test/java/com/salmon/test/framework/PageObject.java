@@ -22,7 +22,6 @@ public abstract class PageObject {
     protected WebDriver webDriver;
 
 
-
     protected PageObject() {
         this.webDriver = WebDriverHelper.getWebDriver();
         this.wait = new WebDriverWait(webDriver, DRIVER_WAIT_TIME);

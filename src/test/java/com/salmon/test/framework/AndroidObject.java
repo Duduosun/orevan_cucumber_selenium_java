@@ -18,8 +18,8 @@ public abstract class AndroidObject {
         this.androidDriver = AndroidHelper.getAndroidWebDriver();
     }
 
-    public void swipe(int startx, int starty, int endx, int endy, int duration){
-        androidDriver.swipe(startx,starty,endx,endy,duration);
+    public void swipe(int startx, int starty, int endx, int endy, int duration) {
+        androidDriver.swipe(startx, starty, endx, endy, duration);
     }
 
 }

@@ -1,4 +1,5 @@
 package com.salmon.test.models.database;
+
 import lombok.Data;
 
 @Data

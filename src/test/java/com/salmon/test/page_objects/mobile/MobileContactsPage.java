@@ -17,11 +17,11 @@ public class MobileContactsPage extends AndroidObject {
         getAndroidDriver().findElement(addContactButton).click();
     }
 
-    public List<AndroidElement> getContactFormFields(){
+    public List<AndroidElement> getContactFormFields() {
         return getAndroidDriver().findElementsByClassName(contactFormFields);
     }
 
-    public void saveContact(){
+    public void saveContact() {
         getAndroidDriver().findElementByName(saveButton).click();
     }
 }

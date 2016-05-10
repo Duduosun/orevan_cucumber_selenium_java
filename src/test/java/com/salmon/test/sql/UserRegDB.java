@@ -1,4 +1,5 @@
 package com.salmon.test.sql;
+
 import com.salmon.test.framework.helpers.DatabaseHelper;
 import com.salmon.test.models.database.UserRegModel;
 import org.apache.commons.dbutils.ResultSetHandler;

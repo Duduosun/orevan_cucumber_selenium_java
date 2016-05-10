@@ -1,6 +1,5 @@
 package com.salmon.test.framework.helpers.screenshot_helper;
 
-import com.salmon.test.framework.PageObject;
 import com.salmon.test.framework.helpers.WebDriverHelper;
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
@@ -12,13 +11,13 @@ import org.slf4j.LoggerFactory;
 
 import java.util.Map;
 
-import static com.salmon.test.framework.helpers.WebDriverHelper.*;
+import static com.salmon.test.framework.helpers.WebDriverHelper.getWebDriver;
 
-public class ScreenshotHook  {
+public class ScreenshotHook {
 
     private static final Logger LOG = LoggerFactory.getLogger(ScreenshotHook.class);
 
-//Not Execute for any api tests
+    //Not Execute for any api tests
     @After
     public void embedScreenshot(Scenario scenario) {
         try {
@@ -39,7 +38,7 @@ public class ScreenshotHook  {
         } catch (WebDriverException | ClassCastException wde) {
             LOG.error(wde.getMessage());
         } finally {
-                getWebDriver().switchTo().defaultContent();
+            getWebDriver().switchTo().defaultContent();
         }
     }
 }

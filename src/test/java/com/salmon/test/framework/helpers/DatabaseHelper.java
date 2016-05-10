@@ -1,4 +1,5 @@
 package com.salmon.test.framework.helpers;
+
 import org.apache.commons.dbutils.DbUtils;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.MapListHandler;

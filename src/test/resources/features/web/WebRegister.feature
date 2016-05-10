@@ -28,6 +28,6 @@ Feature: REGISTER:- As a new customer of Lloydspharmacy I would like to register
     Then i can see the validation message "<validationMessage>"
 
     Examples:
-      | loginId | password | validationMessage      |
-      |         |          | error.enterLogin       |
+      | loginId | password | validationMessage |
+      |         |          | error.enterLogin  |
       #| invalid | invalid  | error.incorrectDetails |
