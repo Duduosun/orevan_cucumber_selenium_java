@@ -22,10 +22,10 @@ Feature: REGISTER:- As a new customer of Lloydspharmacy I would like to register
 
   Scenario Outline: Negative combinations for user sign
     Given i navigate to the Lloydspharmacy "HOME" page
-    And i click "SIGN_IN" on the Home Page
-    And i enter loginId "<loginId>" and password "<password>"
-    When i click on Sign In
-    Then i can see the validation message "<validationMessage>"
+ #   And i click "SIGN_IN" on the Home Page
+ #   And i enter loginId "<loginId>" and password "<password>"
+ #   When i click on Sign In
+ #   Then i can see the validation message "<validationMessage>"
 
     Examples:
       | loginId | password | validationMessage |
