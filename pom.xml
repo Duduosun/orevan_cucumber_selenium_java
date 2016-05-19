@@ -53,7 +53,7 @@
 
     <properties>
         <cucumber.version>1.2.2</cucumber.version>
-        <selenium.version>2.46.0</selenium.version>
+        <selenium.version>2.53.0</selenium.version>
         <junit.version>4.12</junit.version>
         <phantomjs.version>1.2.1</phantomjs.version>
         <slf4jVersion>1.7.7</slf4jVersion>
@@ -63,7 +63,7 @@
         <jackson-core>2.6.3</jackson-core>
         <commons-io>1.3.2</commons-io>
         <commons-lang>3.4</commons-lang>
-        <lombok>1.16.4</lombok>
+        <lombok>1.16.8</lombok>
         <assertj-assert>3.2.0</assertj-assert>
         <appium-java-client>3.1.0</appium-java-client>
         <common-db-utils>1.6</common-db-utils>
@@ -203,8 +203,7 @@
                             <generatePom>true</generatePom>
                         </configuration>
                     </execution>
-
-                    <execution>
+                      <execution>
                         <id>db2jcc-jar-install</id>
                         <phase>validate</phase>
                         <goals>
@@ -219,7 +218,6 @@
                             <generatePom>true</generatePom>
                         </configuration>
                     </execution>
-
                     <execution>
                         <id>db2jcc_license-jar-install</id>
                         <phase>validate</phase>
