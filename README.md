@@ -72,10 +72,10 @@ ngee@salmon.com
 
 Test Automation framework support
 ------------------------------------------
-Gaurav Karvir
+Ramesh Reddy
 --------------
-Test Automation Architect  
-gkarvir@salmon.com  
+Head of Automation
+rrbaddipadaga@salmon.com  
 
 
 
@@ -86,6 +86,14 @@ Configure Ubuntu / Windows and setup: -
 *Git  / SVN  
 *Maven  
 
+Setting up Git in your local machine (if not setup already)
+==============================================
+
+Follow the link https://help.github.com/articles/set-up-git/ 
+
+1. Install Git and setup
+2. Use LDAP (i.e. windows) credentials to login into Salmon gitlab https://gitlab.salmon.ltd.uk/gitlab/dashboard 
+3. Generate SSH key and add to your profile
 
 Get the latest Source Code
 ===========================
